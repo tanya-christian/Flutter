@@ -43,7 +43,7 @@ class Book extends StatelessWidget {
             ListTile(
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return view();
+                  return Details();
                 },));
               },
               title: Text("View Books"),
