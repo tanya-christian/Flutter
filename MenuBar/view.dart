@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class view extends StatelessWidget {
-   view({super.key});
+class Details extends StatelessWidget {
+   Details({super.key});
 
   List<String> lstbook =[];
   @override
