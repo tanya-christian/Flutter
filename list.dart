@@ -1,37 +1,50 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(home: Demo()) );
+  runApp(MaterialApp(home: LstDemo()));
 }
 
-class Demo extends StatelessWidget {
-   Demo({super.key});
-  List<int> lstMarks = [];
-  TextEditingController txtMarks = new TextEditingController();
+class LstDemo extends StatefulWidget {
+  const LstDemo({super.key});
+
+  @override
+  State<LstDemo> createState() => _LstDemoState();
+}
+
+class _LstDemoState extends State<LstDemo> {
+  List<String> lst = [];
+  TextEditingController txtname = TextEditingController();
+  int selectedindx=0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("")),
-      body: Container(
-        margin: EdgeInsets.all(30),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            TextField(controller: txtMarks, decoration: InputDecoration(
-              labelText: "Enter Number"
-            ),),
-            SizedBox(height: 40,),
-            ElevatedButton(onPressed: () {
-                  int marks = int.parse(txtMarks.text);
-                  lstMarks.add(marks);
-                  print(lstMarks);
-            }, child: Text("Enter")),
-          ],
-        ),
+      appBar: AppBar(
+        title: Text("List"),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TextField(
+            controller: txtname,
+            decoration: InputDecoration(label: Text("Enter Name")),
+          ),
+          ElevatedButton(onPressed: () {
+            lst.add(txtname.text);
+
+            setState(() {
+              
+            });
+          }, child: Text("Add")),
+          Text("List Length"+lst.length.toString()),
+          Text(lst.toString()),
+          ElevatedButton(onPressed: () {
+            lst.removeLast();
+            setState(() {
+            });
+          }, child: Text("Delete"))
+        ],
       ),
     );
   }
 }
-
